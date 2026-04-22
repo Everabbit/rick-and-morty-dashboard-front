@@ -8,7 +8,7 @@ declare module 'vue' {
   }
 }
 
-const api = axios.create({ baseURL: '/api' });
+const api = axios.create({ baseURL: 'http://localhost:3000/api' });
 
 export default defineBoot(({ app }) => {
   app.config.globalProperties.$axios = axios;
