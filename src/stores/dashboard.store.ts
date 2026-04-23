@@ -1,10 +1,7 @@
 import { defineStore } from 'pinia';
 import type { LocationQuery, LocationQueryRaw } from 'vue-router';
 import { CharacterGender, CharacterStatus } from 'src/enums/characters.enum';
-import {
-  fetchCharacters,
-  fetchSyncStatus,
-} from 'src/api/characters.service';
+import { fetchCharacters, fetchSyncStatus } from 'src/api/characters.service';
 import type { Character } from 'src/interfaces/character.interface';
 import type { Filters } from 'src/interfaces/characterFilters.interface';
 import type { PaginationInfo } from 'src/interfaces/pagination.interface';
@@ -136,10 +133,7 @@ const parseSortOrder = (value: string | undefined): Filters['sortOrder'] | undef
   return normalized === 'ASC' ? 'ASC' : 'DESC';
 };
 
-const isDifferentQuery = (
-  queryA: LocationQueryRaw,
-  queryB: LocationQueryRaw,
-): boolean => {
+const isDifferentQuery = (queryA: LocationQueryRaw, queryB: LocationQueryRaw): boolean => {
   const normalizedA = JSON.stringify(queryA);
   const normalizedB = JSON.stringify(queryB);
   return normalizedA !== normalizedB;
@@ -251,10 +245,7 @@ export const useDashboardStore = defineStore('dashboard', {
         nextFilters.name = name;
       }
 
-      const status = parseEnum(
-        toSingleQueryValue(query.status),
-        STATUS_VALUES,
-      );
+      const status = parseEnum(toSingleQueryValue(query.status), STATUS_VALUES);
       if (status !== undefined) {
         nextFilters.status = status;
       }
@@ -264,10 +255,7 @@ export const useDashboardStore = defineStore('dashboard', {
         nextFilters.species = species;
       }
 
-      const gender = parseEnum(
-        toSingleQueryValue(query.gender),
-        GENDER_VALUES,
-      );
+      const gender = parseEnum(toSingleQueryValue(query.gender), GENDER_VALUES);
       if (gender !== undefined) {
         nextFilters.gender = gender;
       }
@@ -287,16 +275,12 @@ export const useDashboardStore = defineStore('dashboard', {
         nextFilters.type = type;
       }
 
-      const episodeCountMin = parseNonNegativeInteger(
-        toSingleQueryValue(query.episodeCountMin),
-      );
+      const episodeCountMin = parseNonNegativeInteger(toSingleQueryValue(query.episodeCountMin));
       if (episodeCountMin !== undefined) {
         nextFilters.episodeCountMin = episodeCountMin;
       }
 
-      const episodeCountMax = parseNonNegativeInteger(
-        toSingleQueryValue(query.episodeCountMax),
-      );
+      const episodeCountMax = parseNonNegativeInteger(toSingleQueryValue(query.episodeCountMax));
       if (episodeCountMax !== undefined) {
         nextFilters.episodeCountMax = episodeCountMax;
       }
@@ -381,10 +365,7 @@ export const useDashboardStore = defineStore('dashboard', {
         this.appliedFilters = response.appliedFilters;
         this.charactersCache.set(cacheKey, response);
       } catch (error: unknown) {
-        this.charactersError =
-          error instanceof Error
-            ? error.message
-            : 'Failed to load characters';
+        this.charactersError = error instanceof Error ? error.message : 'Failed to load characters';
       } finally {
         this.isLoadingCharacters = false;
       }
@@ -408,9 +389,7 @@ export const useDashboardStore = defineStore('dashboard', {
         this.syncStatusCache = response;
       } catch (error: unknown) {
         this.syncStatusError =
-          error instanceof Error
-            ? error.message
-            : 'Failed to load sync status';
+          error instanceof Error ? error.message : 'Failed to load sync status';
       } finally {
         this.isLoadingSyncStatus = false;
       }
