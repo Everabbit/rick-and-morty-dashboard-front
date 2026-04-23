@@ -7,7 +7,7 @@ declare module 'vue' {
     $api: AxiosInstance;
   }
 }
-console.log(import.meta.env.VITE_API_URL);
+
 const api = axios.create({ baseURL: import.meta.env.VITE_API_URL || '' });
 
 export default defineBoot(({ app }) => {
