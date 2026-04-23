@@ -2,7 +2,7 @@
   "name": "front",
   "version": "0.0.1",
   "description": "A Quasar Project",
-  "productName": "Quasar App",
+  "productName": "Rick and Morty Dashboard",
   "author": "Everabbit <wendeldelemoscoelho@gmail.com>",
   "type": "module",
   "private": true,
@@ -26,6 +26,7 @@
   "devDependencies": {
     "@eslint/js": "^9.14.0",
     "@quasar/app-vite": "^2.1.0",
+    "@quasar/icongenie": "^4.0.0",
     "@types/node": "^20.5.9",
     "@vue/eslint-config-prettier": "^10.1.0",
     "@vue/eslint-config-typescript": "^14.4.0",
