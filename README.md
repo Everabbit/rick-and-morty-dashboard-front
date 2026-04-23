@@ -78,6 +78,8 @@ Com `VITE_API_URL=/api`, as chamadas ficam:
 - `GET /api/characters`
 - `GET /api/sync/status`
 
+Se estiver usando os repositorios separados no GitHub, a stack Docker da API (API + Postgres + Worker) esta no repositorio da API, no arquivo `api/docker-compose.yml`.
+
 ## Estrutura principal
 
 ```text
